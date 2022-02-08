@@ -98,7 +98,37 @@ ___
 ___ 
 * Layout 
    * Hstack, VStack, LazyVStack, LazyHStack, scrollView, LazyHGrid, LazyVGrid, aspectRatio, padding, GoemetryReader, List, Form, OutlineGroup 
-___
-* @View Builder 
+
 ___ 
-# StandfordCS193p
+# Day 2(Assignment 2 and  Lectures 5)
+![](https://img.shields.io/badge/Xcode-13.2-%231575F9) ![](https://img.shields.io/badge/Swift-5.2.4-%23FA7343)
+* Protocols
+   * almost every function or var used inside classes should be marked as private or private(set) 
+___
+* @ViewBuilder
+    * ViewBuilder is used extensively in SwiftUI to let you create new on-screen views by just listing them out in a trailing closure 
+    * It's a property wrapper applied to function parameter
+    * ```Swift
+      extension Array{
+          var oneAndOnly: Element? {
+              if self.count == 1{
+                  return self.first
+              } else{
+                  return nil
+              }
+          }
+      ```
+___
+* @escaping 
+   * @escaping is used to inform callers of a function that takes a closure that the closure might be stored or otherwise outlive the scope of the receiving function
+   * whenever you have a function that you are passing that  escapes. mark it @escaping. We are holding onto the function.
+   * ```Swift
+      extension Array{
+          var oneAndOnly: Element? {
+              if self.count == 1{
+                  return self.first
+              } else{
+                  return nil
+              }
+          }
+      ```
