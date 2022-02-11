@@ -198,5 +198,14 @@ ___
                 
             }
             
-
+* Using onAppear for geometry 
+   * use when you want to animate a view when it first appears on screen use .onAppar.  
+   * ```Swift
+      Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: (1-animatedBonusRemaing)*360-90))
+       .onAppear {
+           animatedBonusRemaing = card.bonusRemaining
+           withAnimation(.linear(duration: card.bonusTimeRemaining)) {
+               animatedBonusRemaing = 0
+           }
+       }
 
