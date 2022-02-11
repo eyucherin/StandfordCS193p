@@ -1,4 +1,10 @@
 # Standford193P
+
+# Card Game 
+<p align="left">
+<img src="https://user-images.githubusercontent.com/66363530/153610912-a8a0064f-aadb-44e7-a2fc-f35ca81a2b64.gif" width="300" height="500" border="10"/>
+</p>
+
 ## Day 1( Lectures 1 ~ 4) 
 ![](https://img.shields.io/badge/Xcode-13.2-%231575F9) ![](https://img.shields.io/badge/Swift-5.2.4-%23FA7343)
 ___
