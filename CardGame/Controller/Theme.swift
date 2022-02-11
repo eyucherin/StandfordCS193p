@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Create different themes for the game. Called in View Contoller 
 struct Theme{
     var name:String
     var emojis: Array<String>

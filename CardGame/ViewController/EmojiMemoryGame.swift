@@ -24,9 +24,9 @@ class emojiMemoryGame:ObservableObject{
      */
     
     init(){
-        theme = emojiMemoryGame.themes.randomElement()!
+        theme = Self.themes.randomElement()!
         theme.emojis.shuffle()
-        model = emojiMemoryGame.createGame(theme: theme)
+        model = Self.createGame(theme: theme)
     }
     
 
@@ -90,9 +90,19 @@ class emojiMemoryGame:ObservableObject{
     
     
     func newGame(){
-        theme = emojiMemoryGame.themes.randomElement()!
+        theme = Self.themes.randomElement()!
         theme.emojis.shuffle()
+        model = Self.createGame(theme: theme)
+    }
+    
+    func shuffle(){
+        model.shuffle()
+    }
+    
+    func restart(){
         model = emojiMemoryGame.createGame(theme: theme)
     }
+    
+  
     
 }
