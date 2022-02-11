@@ -100,7 +100,7 @@ ___
    * Hstack, VStack, LazyVStack, LazyHStack, scrollView, LazyHGrid, LazyVGrid, aspectRatio, padding, GoemetryReader, List, Form, OutlineGroup 
 
 ___ 
-# Day 2(Assignment 2 and  Lectures 5)
+## Day 3(Assignment 2 and  Lectures 5)
 ![](https://img.shields.io/badge/Xcode-13.2-%231575F9) ![](https://img.shields.io/badge/Swift-5.2.4-%23FA7343)
 * Protocols
    * almost every function or var used inside classes should be marked as private or private(set) 
@@ -132,3 +132,71 @@ ___
               }
           }
       ```
+___ 
+## Day 4(Lectures 6-8)
+![](https://img.shields.io/badge/Xcode-13.2-%231575F9) ![](https://img.shields.io/badge/Swift-5.2.4-%23FA7343)
+* Implicit Aninamtions 
+    * .animation(Animation) 
+    * Automatic animation
+    * All view modifiers that precede this call will be animated 
+    * The changes are modified with duration code 
+    * ```Swift
+      Text(card.content)
+                    .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                    .animation(Animation.linear(duration: 0.5), value:card.isMatched)
+                    .font(font(in: geometry.size))
+* Explicit Animations 
+    * Explicit Animations are not view modifers.
+    * They are functions 
+    * Animates the whole content that you are callling
+    * ```Swift
+      Button("Shuffle"){
+                withAnimation{
+                    game.shuffle()
+                }
+            }
+* Trasitions
+   * Transitions specify how to animate the arrival and departure of Views 
+   * Only works for views that are inside CTAAOS 
+   *(Containers That Are Already On Screen)    
+    * ```Swift
+      ForEach(game.cards.filter(isUndealt)){ card in
+                cardView(card: card)
+                    //.matchedGeometryEffect(id: card.id, in: dealingNameSpace)
+                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .identity))
+                    .zIndex(zIndex(of:card))
+                
+            }
+* Animatable Modifier 
+   * View Modifier to do Animations 
+    * ```Swift
+      struct Cardify:AnimatableModifier{
+       var isFacedUp: Bool
+       var isMatched: Bool
+       var rotation: Double //rotation in degrees
+
+       var animatableData: Double{
+           get{rotation}
+           set{rotation = newValue}
+       }
+    
+* matchedGeometryEffect and @NameSpace
+   * Sometimes you want a view to move from one place of the screen to another 
+   * If the view is moving to a new place in its same container, this is no problem
+   * Moving like this is just animating the .position ViewModifier arguments
+   * This kind of thing happens automatically when you explicitly animate 
+   * ```Swift
+     struct EmojiMemoryGameView: View {
+          @ObservedObject var game: emojiMemoryGame
+          @Namespace private var dealingNameSpace
+          
+           ForEach(game.cards.filter(isUndealt)){ card in
+                cardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNameSpace)
+                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .identity))
+                    .zIndex(zIndex(of:card))
+                
+            }
+            
+
+
